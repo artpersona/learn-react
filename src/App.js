@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
+import { NavLink, BrowserRouter} from 'react-router-dom';
 import './App.css';
+import TestHOC from './HOC/TestHOC'
+const AppLink = (props) => {
+  return(
+    <NavLink {...props} activeClassName="active-link"> 
+      {props.children}
+    </NavLink>
+  )
+}
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <div className="App">
+            <AppLink to="/home">Home</AppLink>
+            <AppLink to="/about">About</AppLink>
+            <AppLink to="/contact">Contact Us</AppLink>
+            <TestHOC></TestHOC>
+        </div>
+    </BrowserRouter>
+
   );
 }
 
